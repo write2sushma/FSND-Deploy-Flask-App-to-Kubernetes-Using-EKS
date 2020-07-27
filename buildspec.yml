@@ -19,15 +19,15 @@ phases:
       - echo `kubectl version`
       - export PATH=$PWD/:$PATH
       - python -m pip install --upgrade --force pip
-      - apt-get update && apt-get -y install jq  && pip install --upgrade awscli
-      - pip install -r requirements.txt 
-      - python -m pytest test_main.py
+      - apt-get update && apt-get -y install jq  && pip install --upgrade awscli      
   pre_build:
       commands:
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
         - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$TAG"'@' simple_jwt_api.yml
         - $(aws ecr get-login --no-include-email)
         - export KUBECONFIG=$HOME/.kube/config
+        - pip install -r requirements.txt 
+        - python -m pytest test_main.py
   build:
     commands:
       - docker build --tag $REPOSITORY_URI:$TAG .
