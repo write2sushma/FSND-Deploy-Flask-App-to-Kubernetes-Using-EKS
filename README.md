@@ -1,5 +1,14 @@
 # Deploying a Flask API
 
+<!-- TOC -->
+- [Description](#description)
+- [Dependencies](#dependencies)
+  - [Docker Engine](#docker-engine)
+  - [AWS Account](#aws-account)
+- [Project Steps](#project-steps)
+<!-- /TOC -->
+
+## Description
 This project was developed for the [Udacity Full Stack Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004) course.
 
 In this project I have containerized and deployed a Flask API to a Kubernetes cluster using Docker, AWS EKS, CodePipeline, and CodeBuild.
@@ -14,10 +23,10 @@ The app relies on a secret set as the environment variable `JWT_SECRET` to produ
 
 ## Dependencies
 
-- Docker Engine
+### Docker Engine
     - Installation instructions for all OSes can be found [here](https://docs.docker.com/install/).
     - For Mac users, if you have no previous Docker Toolbox installation, you can install Docker Desktop for Mac. If you already have a Docker Toolbox installation, please read [this](https://docs.docker.com/docker-for-mac/docker-toolbox/) before installing.
- - AWS Account
+### AWS Account
      - An AWS account can be created by signing up [here](https://aws.amazon.com/#).
      
 ## Project Steps
